@@ -1,5 +1,6 @@
 package ku.shop;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,9 +19,10 @@ public class BuyStepdefs {
         order = new Order();
     }
 
-    @Given("a product (.+) with price (.+) exists")
-    public void a_product_with_price_exists(String name, double price) {
-        catalog.addProduct(name, price);
+    @Given("a product Bread with quantity (.+) with price (.+)")
+    public void a_product_with_price_exists(String name, int quantity, double price) {
+        catalog.addProduct(name, quantity, price);
+        
     }
 
     @When("I buy (.+) with quantity (.+)")
@@ -33,5 +35,16 @@ public class BuyStepdefs {
     public void total_should_be(double total) {
         assertEquals(total, order.getTotal());
     }
+
+
+    @Then("there's (.+) items of (.+) left")
+    public void there_are_items_of_left(int quant, String name) {
+        Product product = catalog.getProduct(name);
+        assertEquals(quant, product.quantity);
+    }
+
+
 }
+
+
 

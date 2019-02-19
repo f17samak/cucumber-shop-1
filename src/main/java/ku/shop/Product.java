@@ -3,10 +3,13 @@ package ku.shop;
 public class Product {
     private double price;
     private String name;
+    public int quantity;
 
-    public Product(String name, double price) {
+    public Product(String name, int quantity, double price) {
         this.name = name;
+        this.quantity = quantity;
         this.price = price;
+
     }
 
     public String getName() {

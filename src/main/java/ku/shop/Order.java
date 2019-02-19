@@ -22,7 +22,9 @@ public class Order {
     }
 
     public void addItem(Product prod, int quantity) {
+
         items.add(new OrderItem(prod, quantity));
+        prod.quantity = prod.quantity - quantity;
     }
 
     public double getTotal() {
