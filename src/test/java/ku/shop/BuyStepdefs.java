@@ -19,11 +19,12 @@ public class BuyStepdefs {
         order = new Order();
     }
 
-    @Given("a product Bread with quantity (.+) with price (.+)")
+    @Given("a product with quantity (.+) with price (.+) exists")
     public void a_product_with_price_exists(String name, int quantity, double price) {
         catalog.addProduct(name, quantity, price);
-        
+
     }
+
 
     @When("I buy (.+) with quantity (.+)")
     public void i_buy_with_quantity(String name, int quant) {
